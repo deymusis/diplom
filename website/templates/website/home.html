@@ -1,0 +1,15 @@
+{% extends 'website/base.html' %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block content %}
+<main>
+<div class="home">
+    <h1>Сокра.тим</h1>
+    <p>Быстро сократим любую длинную ссылку для вашего<br>проекта</p>
+    <a class="button" href="{% url 'profile' %}">Кабинет пользователя</a>
+</div>
+</main>
+{% endblock %}

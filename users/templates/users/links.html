@@ -1,0 +1,24 @@
+{% extends 'website/base.html' %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3>Создание ссылок</h3>
+    <form method="POST" class="form-control">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-outline-warning" type="submit">Создать ссылку</button>
+    </form>
+    <div class="avalible-links">
+        <h3>Доступные ссылки</h3>
+        <ol class="all-links">
+        {% for link in links %}
+            <li>Ссылка - <a href="{{ link.get_absolute_url }}">{{ link.get_absolute_url }}</a></li>
+        {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock %}

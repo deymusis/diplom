@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'website/main.css' %}">
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div id="logo">
+                    <img src="{% static 'website/img/cat.png' %}" alt="cat" id="one">
+                    <span>Уберем все<br>лишнее из ссылки!</span>
+                </div>
+            </div>
+            <div class="navbar-container">
+                <div class="navbar">
+                    <ul id="navbar">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/">Про нас</a></li>
+                        {% if not user.is_authenticated %}
+                        <li><a href="{% url 'user' %}">Войти</a></li>
+                        <li><a href="{% url 'reg' %}">Регистрация</a></li>
+                        {% else %}
+                        <li><a href="{% url 'profile' %}">Личный кабинет</a></li>
+                        <li><a href="{% url 'links' %}">Ссылки</a></li>
+                        <li><a href="{% url 'exit' %}">Выйти</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="footer">
+            <div class="social">
+                <ul id="navlinks">
+                    <li><a href="https://twitter.com/"><img src="{% static 'website/img/twit.png' %}"></a></li>
+                    <li><a href="https://www.youtube.com/"><img src="{% static 'website/img/yout.png' %}"></a></li>
+                    <li><a href="https://www.instagram.com/"><img src="{% static 'website/img/inst.png' %}"></a></li>
+                    <li><a href="https://web.telegram.org/"><img src="{% static 'website/img/teleg.png' %}"></a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>Все права защищены ©</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
